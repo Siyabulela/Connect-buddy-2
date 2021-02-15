@@ -48,7 +48,7 @@ class LandingPage extends StatelessWidget {
                   return SplashScreen();
                 } else {
                   // The user is logged in, head to homepage
-                  return MapScreen();
+                  return MapSample();
                 }
               }
 
