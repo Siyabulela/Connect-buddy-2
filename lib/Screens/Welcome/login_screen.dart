@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+// import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -99,6 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         padding: EdgeInsets.all(20),
         width: double.infinity,
@@ -108,8 +110,8 @@ class _LoginScreenState extends State<LoginScreen> {
             fit: BoxFit.cover,
           ),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
+          // crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             SizedBox(
               height: 100,
@@ -132,6 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
               onSubmitted: (value) {
                 _passwordFocusNode.requestFocus();
               },
+              style: TextStyle(color: Colors.white),
               textInputAction: TextInputAction.next,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
@@ -153,6 +156,7 @@ class _LoginScreenState extends State<LoginScreen> {
               onSubmitted: (value) {
                 _submitForm();
               },
+              style: TextStyle(color: Colors.white),
               keyboardType: TextInputType.visiblePassword,
               decoration: InputDecoration(
                   prefixIcon: Icon(Icons.lock_open_outlined),

@@ -106,6 +106,7 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       body: Container(
         padding: EdgeInsets.all(20),
         width: double.infinity,
@@ -115,8 +116,8 @@ class _SignupScreenState extends State<SignupScreen> {
             fit: BoxFit.cover,
           ),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
+          // crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             SizedBox(
               height: 160,
@@ -138,6 +139,7 @@ class _SignupScreenState extends State<SignupScreen> {
               onSubmitted: (value) {
                 _passwordFocusNode.requestFocus();
               },
+              style: TextStyle(color: Colors.white),
               keyboardType: TextInputType.name,
               decoration: InputDecoration(
                   prefixIcon: Icon(Icons.person_outlined),
@@ -156,6 +158,7 @@ class _SignupScreenState extends State<SignupScreen> {
               onSubmitted: (value) {
                 _passwordFocusNode.requestFocus();
               },
+              style: TextStyle(color: Colors.white),
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                   prefixIcon: Icon(Icons.phone_outlined),
@@ -174,6 +177,7 @@ class _SignupScreenState extends State<SignupScreen> {
               onSubmitted: (value) {
                 _passwordFocusNode.requestFocus();
               },
+              style: TextStyle(color: Colors.white),
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                   prefixIcon: Icon(Icons.email_outlined),
@@ -193,6 +197,7 @@ class _SignupScreenState extends State<SignupScreen> {
               onSubmitted: (value) {
                 _submitForm();
               },
+              style: TextStyle(color: Colors.white),
               keyboardType: TextInputType.visiblePassword,
               decoration: InputDecoration(
                   prefixIcon: Icon(Icons.lock_outlined),
@@ -213,6 +218,7 @@ class _SignupScreenState extends State<SignupScreen> {
               onSubmitted: (value) {
                 _submitForm();
               },
+              style: TextStyle(color: Colors.white),
               keyboardType: TextInputType.visiblePassword,
               decoration: InputDecoration(
                   prefixIcon: Icon(Icons.lock_outlined),
