@@ -2,6 +2,15 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import 'package:Connect_buddy/Screens/Welcome/login_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:Connect_buddy/Screens/Welcome/Community.dart';
+
+final FirebaseAuth _auth = FirebaseAuth.instance;
+
+Future<void> _signOut() async {
+  await _auth.signOut();
+}
 
 class MapSample extends StatefulWidget {
   @override
@@ -18,63 +27,111 @@ class MapSampleState extends State<MapSample> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       // appBar: AppBar(
-        // backgroundColor: Colors.transparent,
-        
+      // backgroundColor: Colors.transparent,
+
       // ),
       body: GoogleMap(
-        
         mapType: MapType.hybrid,
         initialCameraPosition: _kGooglePlex,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
+          // FloatingActionButton(
+          //   backgroundColor: const Color(0xff03dac6),
+          //   foregroundColor: Colors.black,
+          //   mini: true,
+          //   onPressed: () {
+          //     // Respond to button press
+          //   },
+          //   child: Icon(Icons.add),
+          // );
         },
         myLocationButtonEnabled: false,
         myLocationEnabled: true,
         zoomGesturesEnabled: true,
         zoomControlsEnabled: true,
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _currentLocation,
-        label: Text('Get Location'),
-        icon: Icon(Icons.location_on),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-       currentIndex: 0, // this will be set when a new tab is tapped
-       backgroundColor: Colors.blue,
-       items: [
-         BottomNavigationBarItem(
-           icon: new Icon(Icons.home),
-           title: new Text('Home'),
-           backgroundColor: Colors.red,
-          ),
-         BottomNavigationBarItem(
-           icon: new Icon(Icons.mail),
-           title: new Text('Messages'),
-         ),
-          BottomNavigationBarItem(
-           icon: Icon(Icons.logout),
-           title: Text('Logout'),
-         ),
-         BottomNavigationBarItem(
-           icon: Icon(Icons.person),
-           title: Text('Profile')
-         )
-       ],
-     ),
-      // floatingActionButton: Container(
-      //   height: 100.0,
-      //   width: 100.0,
-      //   child: FittedBox(
-      //     child: FloatingActionButton.extended(
-      //       onPressed: _currentLocation,
-      //       label: Text('Allow Google to access my location'),
-      //       icon: Icon(Icons.location_on),
-      //       ),
-      //   ),
+      // floatingActionButton: FloatingActionButton.extended(
+      //   onPressed: _currentLocation,
+      //   label: Text('Get Location'),
+      //   icon: Icon(Icons.location_on),
       // ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   currentIndex: 0, // this will be set when a new tab is tapped
+      //   backgroundColor: Colors.blue,
+      //   items: [
+      //     BottomNavigationBarItem(
+      //       icon: new Icon(Icons.home),
+      //       title: new Text('Home'),
+      //       backgroundColor: Colors.red,
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: new Icon(Icons.mail),
+      //       title: new Text('Messages'),
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.logout),
+      //       title: Text('Logout'),
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.person),
+      //       title: Text('Profile'),
+      //     )
+      //   ],
+      // ),
+      floatingActionButton: Stack(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(left: 31),
+            child: Align(
+              alignment: Alignment.bottomLeft,
+              child: FloatingActionButton(
+                onPressed: () {
+                  _navigateToNextScreen(context);
+                },
+                child: Text("TroubleShoot"),
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomRight,
+            // child: FloatingActionButton(
+            //   onPressed: _currentLocation,
+            //   child: Icon(Icons.location_on),
+            // ),
+          ),
+        ],
+      ),
+
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          children: <Widget>[
+            IconButton(
+                icon: Icon(Icons.logout),
+                onPressed: () {
+                  _signOut();
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return LoginScreen();
+                    },
+                  ));
+                }),
+            Spacer(),
+            IconButton(
+                icon: Icon(Icons.location_on),
+                onPressed: () {
+                  _currentLocation();
+                })
+          ],
+        ),
+      ),
     );
+  }
+
+  void _navigateToNextScreen(BuildContext context) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => CommunityPage()));
   }
 
   void _currentLocation() async {
@@ -96,5 +153,3 @@ class MapSampleState extends State<MapSample> {
     ));
   }
 }
- 
- 

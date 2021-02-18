@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:Connect_buddy/Screens/Welcome/map.dart';
 // import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -41,6 +42,11 @@ class _LoginScreenState extends State<LoginScreen> {
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _loginEmail, password: _loginPassword);
+      Navigator.push(context, MaterialPageRoute(
+        builder: (context) {
+          return MapSample();
+        },
+      ));
       return null;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
