@@ -166,7 +166,79 @@ class CommunityPage extends StatelessWidget {
                         ),
                         Container(
                           color: const Color(0xFF052638),
-                          child: Center(child: Text('Tab3')),
+                            child: Center(
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: 60,
+                                  ),
+                                  Container(
+                                    width: 370,
+                                    height: 100,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Container(
+                                    width: 370,
+                                    height: 100,
+                                     decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.white,
+                                    ),
+                                    
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Container(
+                                    width: 370,
+                                    height: 100,
+                                     decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Container(
+                                    width: 370,
+                                    height: 100,
+                                     decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Container(
+                                    width: 370,
+                                    height: 100,
+                                     decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Container(
+                                    width: 370,
+                                    height: 100,
+                                     decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.white,
+                                    ),
+                                  )
+                                ],
+                            )
+                          ),
                         ) // class name
                       ],
                     ),
@@ -189,11 +261,6 @@ final tab = new TabBar(tabs: <Tab>[
 //   State<Sample> createState() => SampleState();
 // }
 
-BoxDecoration myBoxDecoration() {
-  return BoxDecoration(
-    border: Border.all(width: 3, color: Colors.orangeAccent),
-  );
-}
 
 // class SampleState extends StatelessWidget {
 //   @override
