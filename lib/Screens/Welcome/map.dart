@@ -80,35 +80,19 @@ class MapSampleState extends State<MapSample> {
       //     )
       //   ],
       // ),
-      floatingActionButton: Stack(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(left: 31),
-            child: Align(
-              alignment: Alignment.bottomLeft,
-              child: FloatingActionButton(
-                onPressed: () {
-                  _navigateToNextScreen(context);
-                },
-                child: Text("TroubleShoot"),
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomRight,
-            // child: FloatingActionButton(
-            //   onPressed: _currentLocation,
-            //   child: Icon(Icons.location_on),
-            // ),
-          ),
-        ],
-      ),
+      floatingActionButton: FloatingActionButton.extended(
+          label: Text("Trouble Shoot"),
+          onPressed: () {
+            _navigateToNextScreen(context);
+          }),
 
       bottomNavigationBar: BottomAppBar(
+        color: const Color(0xFF052638),
         child: Row(
           children: <Widget>[
             IconButton(
                 icon: Icon(Icons.logout),
+                color: Colors.white,
                 onPressed: () {
                   _signOut();
                   Navigator.push(context, MaterialPageRoute(
@@ -120,6 +104,7 @@ class MapSampleState extends State<MapSample> {
             Spacer(),
             IconButton(
                 icon: Icon(Icons.location_on),
+                color: Colors.white,
                 onPressed: () {
                   _currentLocation();
                 })
